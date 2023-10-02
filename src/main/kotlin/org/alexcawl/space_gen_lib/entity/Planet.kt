@@ -20,7 +20,6 @@ class Planet(
     fun getDistance(planet: Planet, time: Long): Double {
         val c1 = getCoordinatesWhen(time)
         val c2 = planet.getCoordinatesWhen(time)
-        println("$c1 $c2")
         return sqrt((c1.x - c2.x).pow(2) + (c1.y - c2.y).pow(2))
     }
 
