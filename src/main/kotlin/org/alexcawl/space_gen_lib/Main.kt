@@ -1,10 +1,10 @@
 package org.alexcawl.space_gen_lib
 
 import org.alexcawl.space_gen_lib.system.ApplicationHandler
-import org.alexcawl.space_gen_lib.system.ApplicationLooper
+import org.alexcawl.space_gen_lib.system.ConsoleLooper
 
 fun main(args: Array<String>) {
-    ApplicationLooper(ApplicationHandler()).prepare()
+    ConsoleLooper(ApplicationHandler()).prepare()
 }
 
 /*

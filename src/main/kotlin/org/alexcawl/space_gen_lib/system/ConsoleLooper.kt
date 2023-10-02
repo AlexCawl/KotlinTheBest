@@ -2,7 +2,7 @@ package org.alexcawl.space_gen_lib.system
 
 import kotlin.concurrent.thread
 
-class ApplicationLooper(
+class ConsoleLooper(
     private val handler: Handler
 ) : Looper {
     private val queue: MessageQueue = ApplicationMessageQueue()
