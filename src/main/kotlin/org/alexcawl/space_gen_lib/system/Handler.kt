@@ -1,6 +1,13 @@
 package org.alexcawl.space_gen_lib.system
 
-interface Handler {
+class Handler(
+    private val looper: ILooper
+): IHandler {
+    init {
+        looper.bindHandler(this)
+    }
 
-    fun handle(message: ApplicationMessage)
+    override fun handle(task: Runnable): Unit = task.run()
+
+    override fun post(task: Runnable): Unit = looper.receive(Message(task, this::class.java))
 }

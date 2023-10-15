@@ -1,13 +1,15 @@
 package org.alexcawl.space_gen_lib.system
 
-import java.util.UUID
+import java.util.LinkedList
+import java.util.Queue
 
-interface MessageQueue {
-    fun isEmpty(): Boolean
+class MessageQueue : IMessageQueue {
+    private val lock: Any = Any()
+    private val queue: Queue<Message> = LinkedList()
 
-    fun addMessage(message: ApplicationMessage): UUID
+    override fun isEmpty(): Boolean = synchronized(lock, queue::isEmpty)
 
-    fun removeMessage(id: UUID): ApplicationMessage
+    override fun add(message: Message): Unit = synchronized(lock) { queue.add(message) }
 
-    fun popMessage(): ApplicationMessage
+    override fun pop(): Message = synchronized(lock, queue::remove)
 }
