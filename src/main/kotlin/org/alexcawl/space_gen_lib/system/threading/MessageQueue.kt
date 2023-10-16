@@ -1,5 +1,6 @@
-package org.alexcawl.space_gen_lib.system
+package org.alexcawl.space_gen_lib.system.threading
 
+import org.alexcawl.space_gen_lib.system.entity.Message
 import java.util.LinkedList
 import java.util.Queue
 

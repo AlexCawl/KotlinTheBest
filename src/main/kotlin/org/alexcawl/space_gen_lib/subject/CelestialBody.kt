@@ -1,10 +1,10 @@
-package org.alexcawl.space_gen_lib.entity
+package org.alexcawl.space_gen_lib.subject
 
 import kotlin.math.pow
 
 abstract class CelestialBody(
-    private val weight: Double,
-    private val radius: Double,
+    val weight: Double,
+    val radius: Double,
     private val rotationTime: Long,
     private val rotationType: RotationOrientation
 ) : Rotatable {

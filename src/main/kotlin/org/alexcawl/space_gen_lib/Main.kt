@@ -1,14 +1,15 @@
 package org.alexcawl.space_gen_lib
 
-import org.alexcawl.space_gen_lib.setup.setup
-import org.alexcawl.space_gen_lib.system.Looper
+import org.alexcawl.space_gen_lib.system.util.setup
+import org.alexcawl.space_gen_lib.system.logging.FileLogger
+import org.alexcawl.space_gen_lib.system.threading.Looper
 
-fun main(args: Array<String>) {
+fun main() {
     val looper = Looper.prepare()
-    setup(looper)
+    val logger = FileLogger("log.txt")
+    setup(looper, logger)
     looper.loop()
 }
-
 
 /*
 ap Earth 1.0 2.0 1000.0 60

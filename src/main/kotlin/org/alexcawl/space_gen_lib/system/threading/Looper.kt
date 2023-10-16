@@ -1,4 +1,6 @@
-package org.alexcawl.space_gen_lib.system
+package org.alexcawl.space_gen_lib.system.threading
+
+import org.alexcawl.space_gen_lib.system.entity.Message
 
 class Looper private constructor() : ILooper {
     private val queue: IMessageQueue = MessageQueue()

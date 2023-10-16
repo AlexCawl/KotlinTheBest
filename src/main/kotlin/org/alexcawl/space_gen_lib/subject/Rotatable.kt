@@ -1,4 +1,4 @@
-package org.alexcawl.space_gen_lib.entity
+package org.alexcawl.space_gen_lib.subject
 
 interface Rotatable {
     val angularVelocity: Double
