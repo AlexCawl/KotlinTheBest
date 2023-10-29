@@ -8,6 +8,7 @@ import org.alexcawl.space_gen_lib.system.entity.ApplicationConfiguration
 import org.alexcawl.space_gen_lib.system.entity.Command
 import org.alexcawl.space_gen_lib.system.entity.Priority
 import org.alexcawl.space_gen_lib.system.logging.ILogger
+import org.alexcawl.space_gen_lib.system.marshalling.SpaceSystemDataSource
 import org.alexcawl.space_gen_lib.system.threading.Handler
 import org.alexcawl.space_gen_lib.system.threading.IHandler
 import org.alexcawl.space_gen_lib.system.threading.ILooper
@@ -20,6 +21,8 @@ const val ADD_STAR: String = "as"
 const val GET_DISTANCE: String = "gd"
 const val GET_SORTED: String = "gs"
 const val SHOW_SYSTEM: String = "ss"
+const val LOAD: String = "load"
+const val SAVE: String = "save"
 
 fun recognize(input: String): Command {
     val tokens: List<String> = input.trim().split(" ")
@@ -31,6 +34,8 @@ fun recognize(input: String): Command {
         GET_DISTANCE -> Command.GetDistanceCommand(args)
         GET_SORTED -> Command.GetSortedCommand(args)
         SHOW_SYSTEM -> Command.ShowSystemCommand
+        LOAD -> Command.Load(args[0])
+        SAVE -> Command.Save(args[0])
         else -> Command.UndefinedCommand
     }
 }
@@ -75,25 +80,25 @@ fun setup(looper: ILooper, logger: ILogger?) {
                         println(builder.build().getDistance(name1, name2, time))
                     }
 
-                    is Command.ShowSystemCommand -> {
-                        for (item in builder.build()) {
-                            println(item)
-                        }
+                    is Command.ShowSystemCommand -> for (item in builder.build()) {
+                        println(item)
                     }
 
-                    is Command.GetSortedCommand -> {
-                        when (val sortType = command.args[0]) {
-                            SORT_BY_RADIUS -> builder.build().asSorted { o1, o2 -> o1.radius.compareTo(o2.radius) }
-                            SORT_BY_WEIGHT -> builder.build().asSorted { o1, o2 -> o1.weight.compareTo(o2.weight) }
-                            else -> throw UnsupportedOperationException("Sort type $sortType is not supported!")
-                        }.forEach { item ->
-                            println(item)
-                        }
+                    is Command.GetSortedCommand -> when (val sortType = command.args[0]) {
+                        SORT_BY_RADIUS -> builder.build().asSorted { o1, o2 -> o1.radius.compareTo(o2.radius) }
+                        SORT_BY_WEIGHT -> builder.build().asSorted { o1, o2 -> o1.weight.compareTo(o2.weight) }
+                        else -> throw UnsupportedOperationException("Sort type $sortType is not supported!")
+                    }.forEach { item ->
+                        println(item)
                     }
 
-                    is Command.UndefinedCommand -> {
-                        println("Command is undefined")
+                    is Command.UndefinedCommand -> println("Command is undefined")
+
+                    is Command.Load -> with(SpaceSystemDataSource) {
+                        load(command.path).apply { builder.clear() }.forEach(builder::add)
                     }
+
+                    is Command.Save -> SpaceSystemDataSource.save(builder.build(), command.path)
                 }
             } catch (exception: RuntimeException) {
                 val msg = exception.localizedMessage.toString()

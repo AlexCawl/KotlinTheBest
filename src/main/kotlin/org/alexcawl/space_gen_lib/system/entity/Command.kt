@@ -9,6 +9,10 @@ sealed class Command(val args: List<String>) {
 
     class GetSortedCommand(args: List<String>) : Command(args)
 
+    class Load(val path: String) : Command(listOf())
+
+    class Save(val path: String) : Command(listOf())
+
     object ShowSystemCommand : Command(listOf())
 
     object UndefinedCommand : Command(listOf())

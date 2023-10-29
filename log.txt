@@ -1,0 +1,58 @@
+2023-10-16T13:42:00.704713708 | NORMAL | org.alexcawl.space_gen_lib.setup.Command$AddPlanetCommand@6add40d3
+2023-10-16T13:42:05.315958590 | NORMAL | org.alexcawl.space_gen_lib.setup.Command$AddPlanetCommand@2b03851f
+2023-10-16T13:42:08.188722652 | NORMAL | org.alexcawl.space_gen_lib.setup.Command$AddStarCommand@551eca7
+2023-10-16T13:42:10.862635740 | NORMAL | org.alexcawl.space_gen_lib.setup.Command$GetDistanceCommand@1a4efd24
+2023-10-16T14:06:59.563688978 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@13814b37
+2023-10-16T14:07:02.327488104 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@64febd42
+2023-10-16T14:07:04.610173885 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@3c5bc419
+2023-10-16T14:07:04.610684777  | HIGH | No star in system!
+2023-10-16T14:07:07.471233315 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@6278643f
+2023-10-16T14:07:13.794058072 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@655afaae
+2023-10-30T01:25:35.346576373 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@62922a54
+2023-10-30T01:25:40.092278068 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@503c04a
+2023-10-30T01:25:40.092769946  | HIGH | No star in system!
+2023-10-30T01:25:43.721931807 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@53cdf605
+2023-10-30T01:25:46.324684621 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@5bef14e9
+2023-10-30T01:25:46.324979344  | HIGH | No star in system!
+2023-10-30T01:25:49.833042034 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@e6648f9
+2023-10-30T01:25:53.898501001 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@11cce80f
+2023-10-30T01:42:15.579957386 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@6262934f
+2023-10-30T01:42:15.617574945 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@51480ec2
+2023-10-30T01:42:15.620763357 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@c58a4eb
+2023-10-30T01:42:15.621118292 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@539d983b
+2023-10-30T01:42:17.384443494 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@1e8ccbd1
+2023-10-30T01:42:17.780198281 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@6262934f
+2023-10-30T01:42:19.757833419 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@6262934f
+2023-10-30T01:42:31.570052759 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@446409fb
+2023-10-30T01:42:31.604979452 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@bc569fd
+2023-10-30T01:42:31.605653284 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@3130f740
+2023-10-30T01:42:31.607216899 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@72c4db5d
+2023-10-30T01:42:31.607493612  | HIGH | No star in system!
+2023-10-30T01:42:34.869821612 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@448819aa
+2023-10-30T01:42:35.742067835 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@448819aa
+2023-10-30T01:42:42.539862086 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@4ff18e8e
+2023-10-30T01:42:45.756691574 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@687965ad
+2023-10-30T01:42:48.840945039 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@1a568647
+2023-10-30T01:42:51.718840251 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@3f328c10
+2023-10-30T01:43:02.390373863 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@5b5122be
+2023-10-30T01:43:02.454329241  | HIGH | Serializer for class 'SpaceSystem' is not found.
+Please ensure that class is marked as '@Serializable' and that the serialization compiler plugin is applied.
+
+2023-10-30T01:52:02.512734692 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@74e7aae1
+2023-10-30T01:52:05.528623919 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@4eac5e18
+2023-10-30T01:52:08.004095875 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@72c4db5d
+2023-10-30T01:52:15.706236792 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@607d7327
+2023-10-30T01:53:07.936083176 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@7c667817
+2023-10-30T01:53:14.099552852 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@741dd993
+2023-10-30T01:54:04.266558571 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@74e7aae1
+2023-10-30T01:54:04.288830428 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@4a77418b
+2023-10-30T01:54:04.289410319 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@4fe7ae57
+2023-10-30T01:54:05.268142050 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$UndefinedCommand@2730b0e8
+2023-10-30T01:54:11.194085841 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@c2579c4
+2023-10-30T01:55:09.218608266 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@446409fb
+2023-10-30T01:55:09.253313481 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@bc569fd
+2023-10-30T01:55:09.253983118 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@3130f740
+2023-10-30T01:55:16.685717190 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@607d7327
+2023-10-30T01:55:34.202024807 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Load@75c82dfc
+2023-10-30T01:55:51.269677029 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Load@19deb9a3
+2023-10-30T01:55:58.110319764 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@bc8a63f

@@ -6,8 +6,10 @@ import org.alexcawl.space_gen_lib.system.exception.StarDuplicateException
 
 class SpaceSystem private constructor() : Iterable<CelestialBody> {
     private var _star: Star? = null
-    private val star: Star get() = _star!!
-    private val planets: MutableList<Planet> = mutableListOf()
+    val star: Star get() = _star!!
+
+    private val _planets: MutableList<Planet> = mutableListOf()
+    val planets: List<Planet> get() = _planets.toList()
 
     companion object {
         class Builder {
@@ -28,6 +30,11 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
                     null -> throw SpaceSystemBuildException("No star in system!")
                 }
             }
+
+            fun clear() {
+                system._star = null
+                system._planets.clear()
+            }
         }
     }
 
@@ -41,12 +48,12 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
     }
 
     private fun addPlanet(planet: Planet) {
-        planets.add(planet)
+        _planets.add(planet)
     }
 
     @Throws(PlanetNotFoundException::class)
     private fun getDistanceFromSun(planetName: String): Double {
-        return when (val planet: Planet? = planets.find { it.name == planetName }) {
+        return when (val planet: Planet? = _planets.find { it.name == planetName }) {
             null -> throw PlanetNotFoundException("Planet with name $planetName not found in system!")
             else -> planet.distanceFromSun
         }
@@ -54,8 +61,8 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
 
     @Throws(PlanetNotFoundException::class)
     private fun getDistanceBetween(planetName1: String, planetName2: String, time: Long): Double {
-        val planet1: Planet? = planets.find { it.name == planetName1 }
-        val planet2: Planet? = planets.find { it.name == planetName2 }
+        val planet1: Planet? = _planets.find { it.name == planetName1 }
+        val planet2: Planet? = _planets.find { it.name == planetName2 }
 
         return when {
             planet1 == null -> throw PlanetNotFoundException("Planet with name $planetName1 not found in system!")
@@ -75,8 +82,8 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
     }
 
     override fun iterator(): Iterator<CelestialBody> =
-        mutableListOf<CelestialBody>(star).apply { addAll(planets) }.toList().iterator()
+        mutableListOf<CelestialBody>(star).apply { addAll(_planets) }.toList().iterator()
 
     fun asSorted(comparator: Comparator<in CelestialBody>): List<CelestialBody> =
-        mutableListOf<CelestialBody>(star).apply { addAll(planets) }.toList().sortedWith(comparator)
+        mutableListOf<CelestialBody>(star).apply { addAll(_planets) }.toList().sortedWith(comparator)
 }

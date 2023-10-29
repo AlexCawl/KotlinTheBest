@@ -5,8 +5,8 @@ import kotlin.math.pow
 abstract class CelestialBody(
     val weight: Double,
     val radius: Double,
-    private val rotationTime: Long,
-    private val rotationType: RotationOrientation
+    val rotationTime: Long,
+    val rotationType: RotationOrientation
 ) : Rotatable {
     override val angularVelocity: Double
         get() = 2 * Math.PI / rotationTime
