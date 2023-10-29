@@ -1,12 +1,18 @@
 package org.alexcawl.space_gen_lib.system.util
 
-import org.alexcawl.space_gen_lib.subject.*
+import org.alexcawl.space_gen_lib.subject.Planet
+import org.alexcawl.space_gen_lib.subject.RotationOrientation
+import org.alexcawl.space_gen_lib.subject.SpaceSystem
+import org.alexcawl.space_gen_lib.subject.Star
+import org.alexcawl.space_gen_lib.system.entity.ApplicationConfiguration
 import org.alexcawl.space_gen_lib.system.entity.Command
+import org.alexcawl.space_gen_lib.system.entity.Priority
+import org.alexcawl.space_gen_lib.system.logging.ILogger
 import org.alexcawl.space_gen_lib.system.threading.Handler
 import org.alexcawl.space_gen_lib.system.threading.IHandler
-import org.alexcawl.space_gen_lib.system.logging.ILogger
 import org.alexcawl.space_gen_lib.system.threading.ILooper
-import java.lang.UnsupportedOperationException
+import java.io.FileInputStream
+import java.util.*
 import kotlin.concurrent.thread
 
 const val ADD_PLANET: String = "ap"
@@ -15,9 +21,8 @@ const val GET_DISTANCE: String = "gd"
 const val GET_SORTED: String = "gs"
 const val SHOW_SYSTEM: String = "ss"
 
-@Suppress("DEPRECATION")
 fun recognize(input: String): Command {
-    val tokens: List<String> = input.strip().split(" ")
+    val tokens: List<String> = input.trim().split(" ")
     val command: String = tokens[0]
     val args: List<String> = tokens.drop(1)
     return when (command) {
@@ -33,7 +38,7 @@ fun recognize(input: String): Command {
 const val SORT_BY_RADIUS: String = "radius"
 const val SORT_BY_WEIGHT: String = "weight"
 
-fun setup(looper: ILooper, logger: ILogger) {
+fun setup(looper: ILooper, logger: ILogger?) {
     thread {
         val ioHandler: IHandler = Handler(looper)
         val builder: SpaceSystem.Companion.Builder = SpaceSystem.Companion.Builder()
@@ -42,7 +47,7 @@ fun setup(looper: ILooper, logger: ILogger) {
             val input = readln()
             try {
                 val command = recognize(input)
-                logger.log(command.toString())
+                logger?.log(command.toString())
                 when (command) {
                     is Command.AddPlanetCommand -> ioHandler.post {
                         val planet = Planet(
@@ -58,9 +63,7 @@ fun setup(looper: ILooper, logger: ILogger) {
 
                     is Command.AddStarCommand -> ioHandler.post {
                         val star = Star(
-                            command.args[1].toDouble(),
-                            command.args[2].toDouble(),
-                            command.args[0]
+                            command.args[1].toDouble(), command.args[2].toDouble(), command.args[0]
                         )
                         builder.add(star)
                     }
@@ -93,8 +96,20 @@ fun setup(looper: ILooper, logger: ILogger) {
                     }
                 }
             } catch (exception: RuntimeException) {
-                println(exception.localizedMessage.toString())
+                val msg = exception.localizedMessage.toString()
+                logger?.log(Priority.HIGH, msg)
+                println(msg)
             }
         }
     }
+}
+
+fun readProperties(path: String): ApplicationConfiguration {
+    val prop = Properties()
+    FileInputStream(path).use { prop.load(it) }
+    return ApplicationConfiguration(
+        prop.getProperty("log.console").toBoolean(),
+        prop.getProperty("log.file").toBoolean(),
+        prop.getProperty("log.file.path")
+    )
 }

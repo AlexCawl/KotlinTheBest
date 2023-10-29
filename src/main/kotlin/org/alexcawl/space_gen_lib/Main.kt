@@ -1,12 +1,22 @@
 package org.alexcawl.space_gen_lib
 
+import org.alexcawl.space_gen_lib.system.logging.ConsoleLogger
 import org.alexcawl.space_gen_lib.system.util.setup
 import org.alexcawl.space_gen_lib.system.logging.FileLogger
+import org.alexcawl.space_gen_lib.system.logging.ILogger
 import org.alexcawl.space_gen_lib.system.threading.Looper
+import org.alexcawl.space_gen_lib.system.util.readProperties
+
+const val CONFIG_PATH: String = "application.conf"
 
 fun main() {
+    val configuration = readProperties(CONFIG_PATH)
+    val logger: ILogger? = when {
+        configuration.isConsoleLogging -> ConsoleLogger()
+        configuration.isFileLogging && configuration.logPath != null -> FileLogger(configuration.logPath)
+        else -> null
+    }
     val looper = Looper.prepare()
-    val logger = FileLogger("log.txt")
     setup(looper, logger)
     looper.loop()
 }
