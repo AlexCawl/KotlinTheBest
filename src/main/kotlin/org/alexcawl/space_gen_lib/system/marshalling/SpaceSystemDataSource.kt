@@ -16,7 +16,7 @@ object SpaceSystemDataSource : IDataSource<SpaceSystem> {
         val system = Json.decodeFromString<SpaceSystemDTO>(
             file.inputStream().reader().readLines().joinToString("")
         )
-        val builder = SpaceSystem.Companion.Builder()
+        val builder = SpaceSystem.Builder()
         builder.add(system.star.toModel())
         system.planets.map(PlanetDTO::toModel).forEach { planet: Planet -> builder.add(planet) }
         return builder.build()

@@ -11,33 +11,6 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
     private val _planets: MutableList<Planet> = mutableListOf()
     val planets: List<Planet> get() = _planets.toList()
 
-    companion object {
-        class Builder {
-            val system: SpaceSystem = SpaceSystem()
-
-            @Throws(IllegalStateException::class, StarDuplicateException::class)
-            fun add(celestialBody: CelestialBody) {
-                when (celestialBody) {
-                    is Planet -> system.addPlanet(celestialBody)
-                    is Star -> system.addStar(celestialBody)
-                    else -> throw IllegalStateException("Unknown type of ${celestialBody.javaClass}")
-                }
-            }
-
-            @Throws(SpaceSystemBuildException::class)
-            fun build(): SpaceSystem = system.apply {
-                when (_star) {
-                    null -> throw SpaceSystemBuildException("No star in system!")
-                }
-            }
-
-            fun clear() {
-                system._star = null
-                system._planets.clear()
-            }
-        }
-    }
-
 
     @Throws(StarDuplicateException::class)
     private fun addStar(star: Star) {
@@ -86,4 +59,31 @@ class SpaceSystem private constructor() : Iterable<CelestialBody> {
 
     fun asSorted(comparator: Comparator<in CelestialBody>): List<CelestialBody> =
         mutableListOf<CelestialBody>(star).apply { addAll(_planets) }.toList().sortedWith(comparator)
+
+    class Builder {
+        val system: SpaceSystem = SpaceSystem()
+
+        @Throws(IllegalStateException::class, StarDuplicateException::class)
+        fun add(celestialBody: CelestialBody): Builder {
+            when (celestialBody) {
+                is Planet -> system.addPlanet(celestialBody)
+                is Star -> system.addStar(celestialBody)
+                else -> throw IllegalStateException("Unknown type of ${celestialBody.javaClass}")
+            }
+            return this
+        }
+
+        @Throws(SpaceSystemBuildException::class)
+        fun build(): SpaceSystem = system.apply {
+            when (_star) {
+                null -> throw SpaceSystemBuildException("No star in system!")
+            }
+        }
+
+        fun clear(): Builder {
+            system._star = null
+            system._planets.clear()
+            return this
+        }
+    }
 }

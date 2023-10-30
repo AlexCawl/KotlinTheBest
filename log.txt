@@ -56,3 +56,8 @@ Please ensure that class is marked as '@Serializable' and that the serialization
 2023-10-30T01:55:34.202024807 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Load@75c82dfc
 2023-10-30T01:55:51.269677029 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Load@19deb9a3
 2023-10-30T01:55:58.110319764 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@bc8a63f
+2023-10-30T15:20:35.998058637 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@52e4e832
+2023-10-30T15:20:38.919205630 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddPlanetCommand@7fd16243
+2023-10-30T15:20:42.372005591 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$AddStarCommand@35c5cba5
+2023-10-30T15:20:44.752372820 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$GetDistanceCommand@fbbd55d
+2023-10-30T15:20:50.612859425 | NORMAL | org.alexcawl.space_gen_lib.system.entity.Command$Save@3b057054

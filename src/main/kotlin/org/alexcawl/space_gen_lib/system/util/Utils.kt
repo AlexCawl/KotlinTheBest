@@ -46,7 +46,7 @@ const val SORT_BY_WEIGHT: String = "weight"
 fun setup(looper: ILooper, logger: ILogger?) {
     thread {
         val ioHandler: IHandler = Handler(looper)
-        val builder: SpaceSystem.Companion.Builder = SpaceSystem.Companion.Builder()
+        val builder: SpaceSystem.Builder = SpaceSystem.Builder()
 
         while (true) {
             val input = readln()
